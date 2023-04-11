@@ -1,0 +1,41 @@
+
+<app-employee-navbar></app-employee-navbar>
+<div class="my-4"></div> <!-- Add some vertical space -->
+ <section class="h-100 h-custom" style="background-color: #ffffff;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Select Date</h3>
+
+                        <form class="px-md-2" [formGroup]="registerForm" (ngSubmit)="submitDate()">
+
+                          
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Provide swipe records for following date:</label>
+                                        <input type="date" class="form-control" max="{{currentDate | date:'yyyy-MM-dd'}}" formControlName="selectedDate" />
+                                        <div class="form-hint text-black-50">
+                                            <h6>eg. (yyyy/MM/dd)</h6>
+                                        </div>
+
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['selectedDate'].hasError('required') && registerForm.controls['selectedDate'].touched">
+                                            Date  is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <button type="submit" class="btn btn-success mb-1"
+                                [disabled]="!registerForm.valid">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

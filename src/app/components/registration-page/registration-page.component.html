@@ -1,0 +1,177 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light">Employee Timesheet</a>
+      <div class="collapse navbar-collapse">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pt-3">
+          <h6 class="text-light mx-3 pt-2">Already a User?</h6>
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary btn-sm text-light mx-1 rounded-0" aria-current="page" routerLink="/login">Log in</a>
+
+            </li>
+
+            
+
+            
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <router-outlet> </router-outlet>
+
+<section class="h-100 h-custom" style="background-color: #ffffff;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Form</h3>
+
+                        <form class="px-md-2" [formGroup]="registerForm" (ngSubmit)="registration()">
+
+                            <div class="row">
+                                <div class="form-outline col-md-6 mb-4">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" formControlName="firstName" />
+                                    <div class="form-hint text-black-50">
+                                        <h6>Min length Should be 3 or more</h6>
+                                    </div>
+
+                                    <div class="alert alert-danger"
+                                        *ngIf="registerForm.controls['firstName'].hasError('required') && registerForm.controls['firstName'].touched">
+                                        Firstname is required.</div>
+                                    <div class="alert alert-danger"
+                                        *ngIf="registerForm.controls['firstName'].hasError('minlength') && registerForm.controls['firstName'].touched">
+                                        Minimum length should be atleast 3.</div>
+                                </div>
+
+                                <div class="form-outline col-md-6 mb-4">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" formControlName="lastName" />
+                                    <div class="form-hint text-black-50">
+                                        <h6>Min length Should be 3 or more</h6>
+                                    </div>
+
+                                    <div class="alert alert-danger"
+                                        *ngIf="registerForm.controls['lastName'].hasError('required') && registerForm.controls['lastName'].touched">
+                                        Lastname is required.</div>
+                                    <div class="alert alert-danger"
+                                        *ngIf="registerForm.controls['lastName'].hasError('minlength') && registerForm.controls['lastName'].touched">
+                                        Minimum length should be atleast 3.</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                                <div class="col-mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Email</label>
+                                        <input type="employeeEmail" class="form-control" formControlName="employeeEmail" />
+                                        <div class="form-hint text-black-50">
+                                            <h6>eg. abc@gmail.com</h6>
+                                        </div>
+
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['employeeEmail'].hasError('required') && registerForm.controls['employeeEmail'].touched">
+                                            Email is required.</div>
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['employeeEmail'].hasError('pattern') && registerForm.controls['employeeEmail'].touched">
+                                            Please give correct Email</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Date of birth</label>
+                                        <input type="date" class="form-control" max="{{currentDate | date:'yyyy-MM-dd'}}" formControlName="employeeDob" />
+                                        <div class="form-hint text-black-50">
+                                            <h6>eg. (dd/MM/yyyy)</h6>
+                                        </div>
+
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['employeeDob'].hasError('required') && registerForm.controls['employeeDob'].touched">
+                                            Date of birth is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+               
+
+                            <div class="col-md-6 mb-4">
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Select Role</label>
+                                    <select class="form-select form-select-lg" aria-label="Default select example"
+                                        formControlName="employeeDesignation">
+                                        <option disabled selected>Select Role</option>
+                                        <option value="Software Developer">Software Developer</option>
+                                        <option value="DevOps Engineer">DevOps Engineer</option>
+                                        
+                                    </select>
+                                    <div class="form-hint text-black-50">
+                                        <h6>eg. Devops Engineer/Software Engineer</h6>
+                                    </div>
+
+                                    <div class="alert alert-danger"
+                                        *ngIf="registerForm.controls['employeeDesignation'].hasError('required') && registerForm.controls['employeeDesignation'].touched">
+                                        Role is required.</div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password"
+                                            formControlName="password" />
+                                        <div class="form-hint text-black-50">
+                                            <h6>Min length 6, Max length 20</h6>
+                                        </div>
+
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched">
+                                            Password is required.</div>
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['password'].hasError('pattern') && registerForm.controls['password'].touched">
+                                            At least 8 characters in length, Lowercase and Uppercase letters, Numbers, Special characters.</div>
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['password'].hasError('maxlength') && registerForm.controls['password'].touched">
+                                            Maximum length should be 20</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-outline">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirmPassword"
+                                            formControlName="confirmPassword" />
+                                        <div class="form-hint text-black-50">
+                                            <h6>Should be same as Password</h6>
+                                        </div>
+
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerForm.controls['confirmPassword'].touched">
+                                            Confirm password is required.</div>
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['confirmPassword'].hasError('pattern') && registerForm.controls['confirmPassword'].touched">
+                                            At least 8 characters in length, Lowercase and Uppercase letters, Numbers, Special characters.</div>
+                                        <div class="alert alert-danger"
+                                            *ngIf="registerForm.controls['confirmPassword'].hasError('maxlength') && registerForm.controls['confirmPassword'].touched">
+                                            Maximum length should be 20</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <button type="submit" class="btn btn-success mb-1"
+                                [disabled]="!registerForm.valid">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

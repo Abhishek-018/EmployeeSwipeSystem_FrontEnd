@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light  bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light">Employee Timesheet</a>
+      <div class="collapse navbar-collapse">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 pt-3">
+          <h6 class="text-light mx-3 pt-2">Not a User?</h6>
+            <li class="nav-item">
+                <a class="nav-link btn btn-primary btn-sm text-light mx-1 rounded-0" aria-current="page" routerLink="/registrationForm">Register</a>
+
+            </li>
+
+            
+
+            
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <router-outlet> </router-outlet>
+<section class="h-100 h-custom" style="background-color: #ffffff;">
+  <br><br><br><br>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Login</h3>
+
+            <form class="px-md-2" [formGroup]="loginForm" (ngSubmit)="loginMethod()">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label">Email</label>
+                    <input type="employeeEmail" class="form-control" formControlName="employeeEmail" />
+
+                    <div class="alert alert-danger"
+                      *ngIf="loginForm.controls['employeeEmail'].hasError('required') && loginForm.controls['employeeEmail'].touched">
+                      Email is required.</div>
+                    <div class="alert alert-danger"
+                      *ngIf="loginForm.controls['employeeEmail'].hasError('pattern') && loginForm.controls['employeeEmail'].touched">
+                      Please enter correct Email</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                <div class="col-md-6">
+                  <div class="form-outline">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password" />
+                    <div class="alert alert-danger"
+                      *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+                      Password is required.</div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg mb-1" [disabled]="!loginForm.valid">Login</button>
+              <br />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
