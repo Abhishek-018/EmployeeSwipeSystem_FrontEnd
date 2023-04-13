@@ -1,0 +1,29 @@
+<app-employee-navbar></app-employee-navbar>
+<div class="my-4"></div> <!-- Add some vertical space -->
+
+<div *ngIf="swipes.length > 0">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Date</th>
+                <th scope="col">Swipe In Time</th>
+                <th scope="col">Swipe Out Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr *ngFor="let swipe of swipes; let i=index">
+                  <td>{{ i+1 }}</td>
+                  <td>{{ swipe.date | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ swipe.swipeInTime }}</td>
+                  <td>{{ swipe.swipeOutTime }}</td>
+                </tr>
+           
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="swipes.length === 0">
+    No records for the selected date.
+</div>

@@ -11,7 +11,9 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { LoginComponent } from './components/login/login.component';
 import { EmployeeNavbarComponent } from './components/employee-navbar/employee-navbar.component';
 import { EmployeeTimesheetComponent } from './components/employee-timesheet/employee-timesheet.component';
-import { DisplayEmployeeTimesheetComponent } from './components/display-employee-timesheet/display-employee-timesheet.component';
+import { SwipeLogsComponent } from './components/swipe-logs/swipe-logs.component';
+import { SelectDateComponent } from './components/select-date/select-date.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DisplayEmployeeTimesheetComponent } from './components/display-employee
     LoginComponent,
     EmployeeNavbarComponent,
     EmployeeTimesheetComponent,
-    DisplayEmployeeTimesheetComponent
+    SwipeLogsComponent,
+    SelectDateComponent,
+   
   ],
   imports: [
     CommonModule,
