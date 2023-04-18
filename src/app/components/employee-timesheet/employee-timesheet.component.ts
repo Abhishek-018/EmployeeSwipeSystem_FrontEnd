@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ISwipeApiResponseEntity } from 'src/app/utility/iswipe-api-response-entity';
 import { SwipeService } from 'src/app/utility/swipe.service';
 
 @Component({
@@ -10,18 +9,66 @@ import { SwipeService } from 'src/app/utility/swipe.service';
 })
 export class EmployeeTimesheetComponent implements OnInit {
   
-
-  constructor() { }
+  response:any
+  actualWorkingHoursData: ISwipeApiResponseEntity | undefined;
+  totalWorkingHoursData:ISwipeApiResponseEntity | undefined;
+  outTimeSpentData:ISwipeApiResponseEntity | undefined;
+  sessionDate:string = '';
+  constructor(private _swipeService:SwipeService) { }
 
   
 
 
 
   ngOnInit(): void {
+    const sessionEmployeeId = sessionStorage.getItem('employeeId')!;
+    const empId = parseInt(sessionEmployeeId);
+    const sessionSelectedDate = sessionStorage.getItem('selectedDateForEmployeeTimesheet')!;
+    this.sessionDate = sessionSelectedDate;
+
     
+    this._swipeService.getActualWorkingHours(empId,sessionSelectedDate).subscribe({
+      next: (data:ISwipeApiResponseEntity) =>{
+        console.log("Actual Working Hours :",data);
+        this.actualWorkingHoursData = data
+        console.log(typeof this.actualWorkingHoursData.statusCode,this.actualWorkingHoursData.statusCode)
+
+      },
+
+      error: (error:any) =>{
+        console.log(error)
+
+
+      }
+    });
+    
+    this._swipeService.getEmployeeTotalWorkingHours(empId,sessionSelectedDate).subscribe({
+      next : (data:ISwipeApiResponseEntity) =>{
+        console.log("Total Working Hours :",data);
+        this.totalWorkingHoursData =data
+      },
+
+      error : (error:any)=>{
+        console.log(error);
+      }
+    });
+
+    this._swipeService.getEmployeeOutTime(empId,sessionSelectedDate).subscribe({
+      next : (data:ISwipeApiResponseEntity)=>{
+        console.log("Out Time: ",data);
+        this.outTimeSpentData = data
+      },
+
+      error :(error:any)=>{
+        console.log(error);
+
+      }
+    })
 
 
   }
+
+
 
 
 

@@ -1,0 +1,35 @@
+<app-employee-navbar></app-employee-navbar>
+<div class="my-4"></div> <!-- Add some vertical space -->
+
+<div >
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Date</th>
+                <th scope="col">First Swipe</th>
+                <th scope="col">Last Swipe</th>
+                <th scope="col">Actual Working Hours</th>
+                <th scope="col">Total Working Hours</th>
+                <th scope="col">Total Time Spent Outside</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                  <td>1</td>
+                  <td>{{ sessionDate | date:'dd/MM/yyyy' }}</td>
+                  <td>{{ actualWorkingHoursData?.firstSwipe}}</td>
+                  <td>{{ actualWorkingHoursData?.lastSwipe}}</td>
+                  <td>{{ actualWorkingHoursData?.message }}</td>
+                  <td>{{ totalWorkingHoursData?.message }}</td>
+                  <td>{{ outTimeSpentData?.message }}</td>
+                </tr>
+           
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="actualWorkingHoursData?.status" === "BAD_REQUEST">
+    Please Swipe out first.
+</div>

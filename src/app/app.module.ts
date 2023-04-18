@@ -13,6 +13,8 @@ import { EmployeeNavbarComponent } from './components/employee-navbar/employee-n
 import { EmployeeTimesheetComponent } from './components/employee-timesheet/employee-timesheet.component';
 import { SwipeLogsComponent } from './components/swipe-logs/swipe-logs.component';
 import { SelectDateComponent } from './components/select-date/select-date.component';
+import { ChooseDateComponent } from './components/choose-date/choose-date.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { SelectDateComponent } from './components/select-date/select-date.compon
     EmployeeTimesheetComponent,
     SwipeLogsComponent,
     SelectDateComponent,
+    ChooseDateComponent,
+    HomeComponent,
    
   ],
   imports: [

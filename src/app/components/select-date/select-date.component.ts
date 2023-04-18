@@ -28,7 +28,7 @@ export class SelectDateComponent implements OnInit {
 
   submitDate(){
     const date: string = this.registerForm.value.selectedDate;
-    sessionStorage.setItem('selectedDate', date); 
+    sessionStorage.setItem('selectedDateForEmployeeSwipeLogs', date); 
     setTimeout(() => {
       this._router.navigate(['/swipeLogs']);
     }, 1000);

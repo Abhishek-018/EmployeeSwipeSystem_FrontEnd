@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           })
           this.loginForm.reset();
           setTimeout(() => {
-            this._router.navigate(["/EmployeeNavbar"])
+            this._router.navigate(["/home"])
             
           }, 2000);
           

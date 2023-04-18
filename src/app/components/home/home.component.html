@@ -1,0 +1,34 @@
+<app-employee-navbar></app-employee-navbar>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Swipe In/Out Buttons</title> 
+	<!-- Add the Bootstrap CSS stylesheet -->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row justify-content-center mt-5">
+			<div class="col-md-4 text-center">
+				<button class="btn btn-primary btn-lg mr-3" id="swipe-in" (click)="onSwipeInClick()">Swipe In</button>
+				<button class="btn btn-secondary btn-lg ml-3" id="swipe-out" (click) ="onSwipeOutClick()">Swipe Out</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Add the Bootstrap JS library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<!-- <h2>Swipe In</h2>
+<label for="employeeId">Employee ID</label>
+<input type="number" id="employeeId" #employeeId required>
+<br>
+<label for="date">Date</label>
+<input type="date" id="date" #date required>
+<br>
+<button (click)="onSwipeInClick()">Swipe In</button> -->
+

@@ -15,12 +15,12 @@ export class SwipeLogsComponent implements OnInit {
   constructor(private _swipeService: SwipeService) { }
 
   ngOnInit(): void {
-    var SessionSelectedDate = sessionStorage.getItem('selectedDate')!;
-    console.log("This is SessionSelectedDate from SwipeLogsComponent: ",typeof SessionSelectedDate,SessionSelectedDate);
-    var SessionEmpId = sessionStorage.getItem('employeeId')!;
-    console.log("This is SessionEmpId from SwipeLogsComponent: ",SessionEmpId);
-    var empId = parseInt(SessionEmpId);
-    this._swipeService.getEmployeeSwipeRecordForDate(empId, SessionSelectedDate).subscribe({
+    var sessionSelectedDate = sessionStorage.getItem('selectedDateForEmployeeSwipeLogs')!;
+    console.log("This is sessionSelectedDateForEmployeeSwipeLogs from SwipeLogsComponent: ",typeof sessionSelectedDate,sessionSelectedDate);
+    var sessionEmpId = sessionStorage.getItem('employeeId')!;
+    console.log("This is SessionEmpId from SwipeLogsComponent: ",sessionEmpId);
+    var empId = parseInt(sessionEmpId);
+    this._swipeService.getEmployeeSwipeRecordForDate(empId, sessionSelectedDate).subscribe({
       next: (data:ISwipeApiResponseEntity) => {
         this.response = data;
         console.log("EmpId from SwipeLogsComponent Component: ", empId)
