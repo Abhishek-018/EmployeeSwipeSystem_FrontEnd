@@ -12,6 +12,7 @@
                 <th scope="col">Actual Working Hours</th>
                 <th scope="col">Total Working Hours</th>
                 <th scope="col">Total Time Spent Outside</th>
+                <th scope="col">Remaining Working Hours</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +20,22 @@
                 <tr>
                   <td>1</td>
                   <td>{{ sessionDate | date:'dd/MM/yyyy' }}</td>
-                  <td>{{ actualWorkingHoursData?.firstSwipe}}</td>
-                  <td>{{ actualWorkingHoursData?.lastSwipe}}</td>
-                  <td>{{ actualWorkingHoursData?.message }}</td>
-                  <td>{{ totalWorkingHoursData?.message }}</td>
-                  <td>{{ outTimeSpentData?.message }}</td>
+                  <td>{{actualWorkingHoursDataResponse.firstSwipe}}</td>
+                  <td>{{actualWorkingHoursDataResponse.lastSwipe}}</td>
+                  <td>{{actualWorkingHoursDataResponse.actualWorkingHours}}</td>
+                  <td>{{totalWorkingHoursDataResponse.totalWorkingHours}}</td>
+                  <td>{{outTimeSpentDataResponse.totalTimeSpentOutside}}</td>
+
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
            
         </tbody>
     </table>
 </div>
 
-<div *ngIf="actualWorkingHoursData?.status" === "BAD_REQUEST">
+<div *ngIf="actualWorkingHoursData?.status === 'BAD_REQUEST'">
     Please Swipe out first.
 </div>

@@ -8,23 +8,25 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { SelectDateComponent } from './components/select-date/select-date.component';
 import { SwipeLogsComponent } from './components/swipe-logs/swipe-logs.component';
+import { AuthGuardService } from './utility/auth-guard.service';
 
 const routes: Routes = [
 
   
     {path:"registrationForm", component:RegistrationPageComponent},
     {path:"login", component:LoginComponent},
-    {path:"EmployeeNavbar",component:EmployeeNavbarComponent},
-    {path:"selectDate",component:SelectDateComponent},
-    {path:"swipeLogs",component:SwipeLogsComponent},
-    {path:"employeeTimesheet",component:EmployeeTimesheetComponent},
-    {path:"chooseDate",component:ChooseDateComponent},
-    {path: "home",component:HomeComponent}
+    {path:"EmployeeNavbar",component:EmployeeNavbarComponent,canActivate: [AuthGuardService]},
+    {path:"selectDate",component:SelectDateComponent,canActivate: [AuthGuardService]},
+    {path:"swipeLogs",component:SwipeLogsComponent,canActivate: [AuthGuardService]},
+    {path:"employeeTimesheet",component:EmployeeTimesheetComponent,canActivate: [AuthGuardService]},
+    {path:"chooseDate",component:ChooseDateComponent,canActivate: [AuthGuardService]},
+    {path: "home",component:HomeComponent,canActivate: [AuthGuardService]}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuardService] 
 })
 export class AppRoutingModule { 
   

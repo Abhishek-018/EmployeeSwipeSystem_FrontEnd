@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IApiResponseEntity } from 'src/app/utility/i-api-response-entity';
 import { ISwipeApiResponseEntity } from 'src/app/utility/iswipe-api-response-entity';
 import { SwipeService } from 'src/app/utility/swipe.service';
 import Swal from 'sweetalert2';
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
     const empId = parseInt(sessionEmployeeId);
     this._swipeService.swipeIn(empId).subscribe({
 
-      next: (data: ISwipeApiResponseEntity) => {
+      next: (data: IApiResponseEntity) => {
         console.log(data);
         Swal.fire({
           position: 'center',
@@ -57,11 +58,19 @@ export class HomeComponent implements OnInit {
     const empId = parseInt(sessionEmployeeId);
     this._swipeService.swipeOut(empId).subscribe({
 
-      next: (data: ISwipeApiResponseEntity) => {
+      next: (data: IApiResponseEntity) => {
         console.log(data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 2000
+        })
       },
       error: (error: any) => {
         console.log(error.error);
+        Swal.fire('Unauthorized', error.error.message, 'error')
       }
 
     });

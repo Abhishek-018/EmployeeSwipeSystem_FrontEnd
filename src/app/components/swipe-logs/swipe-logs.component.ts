@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IApiResponseEntity } from 'src/app/utility/i-api-response-entity';
 import { ISwipe } from 'src/app/utility/iswipe';
 import { ISwipeApiResponseEntity } from 'src/app/utility/iswipe-api-response-entity';
 import { SwipeService } from 'src/app/utility/swipe.service';
@@ -21,7 +22,7 @@ export class SwipeLogsComponent implements OnInit {
     console.log("This is SessionEmpId from SwipeLogsComponent: ",sessionEmpId);
     var empId = parseInt(sessionEmpId);
     this._swipeService.getEmployeeSwipeRecordForDate(empId, sessionSelectedDate).subscribe({
-      next: (data:ISwipeApiResponseEntity) => {
+      next: (data:IApiResponseEntity) => {
         this.response = data;
         console.log("EmpId from SwipeLogsComponent Component: ", empId)
         console.log("Swipe Records: ",this.response);
