@@ -13,6 +13,7 @@
                 <th scope="col">Total Working Hours</th>
                 <th scope="col">Total Time Spent Outside</th>
                 <th scope="col">Remaining Working Hours</th>
+                <th scope="col">End of Day</th>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +26,8 @@
                   <td>{{actualWorkingHoursDataResponse.actualWorkingHours}}</td>
                   <td>{{totalWorkingHoursDataResponse.totalWorkingHours}}</td>
                   <td>{{outTimeSpentDataResponse.totalTimeSpentOutside}}</td>
-
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{remianingWorkingHourDataResponse.remainingWorkingHours}}</td>
+                  <td>{{response.endOfDayTime}}</td>
                 </tr>
            
         </tbody>

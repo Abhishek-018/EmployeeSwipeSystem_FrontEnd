@@ -9,15 +9,18 @@ import { SwipeService } from 'src/app/utility/swipe.service';
 })
 export class EmployeeTimesheetComponent implements OnInit {
   
-  actualWorkingHoursDataResponse: any = {} // Initialize with empty object
+  actualWorkingHoursDataResponse: any={}; // Initialize with empty object
   totalWorkingHoursDataResponse: any = {}; // Initialize with empty object
   outTimeSpentDataResponse: any = {}; // Initialize with empty object
-
+  remianingWorkingHourDataResponse: any = {};
+  response:any;
 
 
   actualWorkingHoursData: IApiResponseEntity | undefined;
   totalWorkingHoursData:IApiResponseEntity | undefined;
   outTimeSpentData:IApiResponseEntity | undefined;
+  remianingWorkingHourData:IApiResponseEntity | undefined;
+  endOfDayData:IApiResponseEntity | undefined;
   sessionDate:string = '';
 
   
@@ -68,6 +71,33 @@ export class EmployeeTimesheetComponent implements OnInit {
         console.log("Out Time: ",data);
         this.outTimeSpentData = data;
         this.outTimeSpentDataResponse = this.outTimeSpentData.responseBody;
+      },
+
+      error :(error:any)=>{
+        console.log(error);
+
+      }
+    })
+
+    this._swipeService.getEmployeeRemainingWorkingHour(empId,sessionSelectedDate).subscribe({
+      next : (data:IApiResponseEntity)=>{
+        console.log("Remaining Working Hour : ",data);
+        this.remianingWorkingHourData = data;
+        this.remianingWorkingHourDataResponse = this.remianingWorkingHourData.responseBody;
+      },
+
+      error :(error:any)=>{
+        console.log(error);
+
+      }
+    })
+
+    this._swipeService.getEndOfDay(empId,sessionSelectedDate).subscribe({
+      next : (data:IApiResponseEntity)=>{
+        console.log("End Of Day  : ",data);
+        this.endOfDayData = data;
+        this.response = this.endOfDayData.responseBody;
+        
       },
 
       error :(error:any)=>{

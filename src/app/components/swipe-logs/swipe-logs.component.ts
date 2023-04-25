@@ -23,11 +23,23 @@ export class SwipeLogsComponent implements OnInit {
     var empId = parseInt(sessionEmpId);
     this._swipeService.getEmployeeSwipeRecordForDate(empId, sessionSelectedDate).subscribe({
       next: (data:IApiResponseEntity) => {
-        this.response = data;
+        if (data) {
+          this.response = data;
+        } else {
+          console.log("No Data Found")
+        }
+        
         console.log("EmpId from SwipeLogsComponent Component: ", empId)
-        console.log("Swipe Records: ",this.response);
-        this.swipes = this.response.responseBody;
-        console.log("this.swipes: ",this.swipes);
+        console.log("Swipe Logs: ",this.response);
+
+        
+        if ( this.response.responseBody) {
+          this.swipes = this.response.responseBody;
+          console.log("this.swipes: ",this.swipes);
+        } else {
+          console.log("No Data Found For Employee And Date");
+        }
+        
 
       },
       error: (error: any) => {
