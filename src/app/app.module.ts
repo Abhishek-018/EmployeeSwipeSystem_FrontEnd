@@ -15,6 +15,7 @@ import { SwipeLogsComponent } from './components/swipe-logs/swipe-logs.component
 import { SelectDateComponent } from './components/select-date/select-date.component';
 import { ChooseDateComponent } from './components/choose-date/choose-date.component';
 import { HomeComponent } from './components/home/home.component';
+import { TodaysTimesheetComponent } from './components/todays-timesheet/todays-timesheet.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { HomeComponent } from './components/home/home.component';
     SelectDateComponent,
     ChooseDateComponent,
     HomeComponent,
+    TodaysTimesheetComponent,
    
   ],
   imports: [

@@ -13,18 +13,23 @@ export class EmployeeTimesheetComponent implements OnInit {
   totalWorkingHoursDataResponse: any = {}; // Initialize with empty object
   outTimeSpentDataResponse: any = {}; // Initialize with empty object
   remianingWorkingHourDataResponse: any = {};
-  response:any;
 
+  response: IApiResponseEntity = {} as IApiResponseEntity;
 
-  actualWorkingHoursData: IApiResponseEntity | undefined;
-  totalWorkingHoursData:IApiResponseEntity | undefined;
-  outTimeSpentData:IApiResponseEntity | undefined;
-  remianingWorkingHourData:IApiResponseEntity | undefined;
-  endOfDayData:IApiResponseEntity | undefined;
+  firstSwipe:any;
+  lastSwipe:any;
+  actualWorkingHoursData: any;
+  totalWorkingHoursData:any;
+  outTimeSpentData:any;
+  remianingWorkingHourData:any;
+  endOfDayData:any;
   sessionDate:string = '';
 
-  
-  constructor(private _swipeService:SwipeService) { }
+
+
+  constructor(private _swipeService:SwipeService) { 
+ 
+  }
 
   
 
@@ -40,10 +45,12 @@ export class EmployeeTimesheetComponent implements OnInit {
     this._swipeService.getActualWorkingHours(empId,sessionSelectedDate).subscribe({
       next: (data:IApiResponseEntity) =>{
         console.log("Actual Working Hours :",data);
-        this.actualWorkingHoursData = data;
-        this.actualWorkingHoursDataResponse = this.actualWorkingHoursData.responseBody;
+        this.response = data;
+        this.actualWorkingHoursDataResponse = this.response.responseBody.actualWorkingHours;
+        this.firstSwipe=this.response.responseBody.firstSwipe;
+        this.lastSwipe=this.response.responseBody.lastSwipe;
         console.log("this.actualWorkingHours",this.actualWorkingHoursData)
-        console.log(typeof this.actualWorkingHoursData.status,this.actualWorkingHoursData.status)
+        
 
       },
 
@@ -57,8 +64,8 @@ export class EmployeeTimesheetComponent implements OnInit {
     this._swipeService.getEmployeeTotalWorkingHours(empId,sessionSelectedDate).subscribe({
       next : (data:IApiResponseEntity) =>{
         console.log("Total Working Hours :",data);
-        this.totalWorkingHoursData =data;
-        this.totalWorkingHoursDataResponse = this.totalWorkingHoursData.responseBody;
+        this.response =data;
+        this.totalWorkingHoursDataResponse = this.response.responseBody.totalWorkingHours;
       },
 
       error : (error:any)=>{
@@ -69,8 +76,8 @@ export class EmployeeTimesheetComponent implements OnInit {
     this._swipeService.getEmployeeOutTime(empId,sessionSelectedDate).subscribe({
       next : (data:IApiResponseEntity)=>{
         console.log("Out Time: ",data);
-        this.outTimeSpentData = data;
-        this.outTimeSpentDataResponse = this.outTimeSpentData.responseBody;
+        this.response = data;
+        this.outTimeSpentDataResponse = this.response.responseBody.totalTimeSpentOutside;
       },
 
       error :(error:any)=>{
@@ -79,32 +86,7 @@ export class EmployeeTimesheetComponent implements OnInit {
       }
     })
 
-    this._swipeService.getEmployeeRemainingWorkingHour(empId,sessionSelectedDate).subscribe({
-      next : (data:IApiResponseEntity)=>{
-        console.log("Remaining Working Hour : ",data);
-        this.remianingWorkingHourData = data;
-        this.remianingWorkingHourDataResponse = this.remianingWorkingHourData.responseBody;
-      },
-
-      error :(error:any)=>{
-        console.log(error);
-
-      }
-    })
-
-    this._swipeService.getEndOfDay(empId,sessionSelectedDate).subscribe({
-      next : (data:IApiResponseEntity)=>{
-        console.log("End Of Day  : ",data);
-        this.endOfDayData = data;
-        this.response = this.endOfDayData.responseBody;
-        
-      },
-
-      error :(error:any)=>{
-        console.log(error);
-
-      }
-    })
+    
 
 
   }

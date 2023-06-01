@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { SelectDateComponent } from './components/select-date/select-date.component';
 import { SwipeLogsComponent } from './components/swipe-logs/swipe-logs.component';
+import { TodaysTimesheetComponent } from './components/todays-timesheet/todays-timesheet.component';
 import { AuthGuardService } from './utility/auth-guard.service';
 
 const routes: Routes = [
@@ -20,7 +21,9 @@ const routes: Routes = [
     {path:"swipeLogs",component:SwipeLogsComponent,canActivate: [AuthGuardService]},
     {path:"employeeTimesheet",component:EmployeeTimesheetComponent,canActivate: [AuthGuardService]},
     {path:"chooseDate",component:ChooseDateComponent,canActivate: [AuthGuardService]},
+    {path: "todaysTimesheet",component:TodaysTimesheetComponent,canActivate: [AuthGuardService]},
     {path: "home",component:HomeComponent,canActivate: [AuthGuardService]}
+    
 ];
 
 @NgModule({

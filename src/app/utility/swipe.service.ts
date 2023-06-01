@@ -45,14 +45,14 @@ export class SwipeService {
 
   }
 
-  getEmployeeRemainingWorkingHour(employeeId:number,date:string):Observable<IApiResponseEntity>{
-    const url =`${this.apiUrl}/getRemainingWorkingHours?employeeId=${employeeId}&date=${date}`;
+  getEmployeeRemainingWorkingHour(employeeId:number):Observable<IApiResponseEntity>{
+    const url =`${this.apiUrl}/getRemainingWorkingHours?employeeId=${employeeId}`;
     return this.http.get<IApiResponseEntity>(url);
 
   }
 
-  getEndOfDay(employeeId:number,date:string):Observable<IApiResponseEntity>{
-    const url =`${this.apiUrl}/getEndOfDay?employeeId=${employeeId}&date=${date}`;
+  getEndOfDay(employeeId:number):Observable<IApiResponseEntity>{
+    const url =`${this.apiUrl}/getEndOfDay?employeeId=${employeeId}`;
     return this.http.get<IApiResponseEntity>(url);
 
   }

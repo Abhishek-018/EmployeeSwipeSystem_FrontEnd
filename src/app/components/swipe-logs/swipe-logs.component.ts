@@ -25,20 +25,22 @@ export class SwipeLogsComponent implements OnInit {
       next: (data:IApiResponseEntity) => {
         if (data) {
           this.response = data;
+          this.swipes = this.response?.responseBody
+          console.log("this.swipes: ",this.swipes);
         } else {
           console.log("No Data Found")
         }
         
-        console.log("EmpId from SwipeLogsComponent Component: ", empId)
-        console.log("Swipe Logs: ",this.response);
+        //console.log("EmpId from SwipeLogsComponent Component: ", empId)
+        // console.log("Swipe Logs: ",this.response);
 
         
-        if ( this.response.responseBody) {
-          this.swipes = this.response.responseBody;
-          console.log("this.swipes: ",this.swipes);
-        } else {
-          console.log("No Data Found For Employee And Date");
-        }
+        // if ( this.response?.responseBody) {
+        //   this.swipes = this.response.responseBody;
+        //   console.log("this.swipes: ",this.swipes);
+        // } else {
+        //   console.log("No Data Found For Employee And Date");
+        // }
         
 
       },

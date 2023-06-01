@@ -12,8 +12,7 @@
                 <th scope="col">Actual Working Hours</th>
                 <th scope="col">Total Working Hours</th>
                 <th scope="col">Total Time Spent Outside</th>
-                <th scope="col">Remaining Working Hours</th>
-                <th scope="col">End of Day</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -21,13 +20,12 @@
                 <tr>
                   <td>1</td>
                   <td>{{ sessionDate | date:'dd/MM/yyyy' }}</td>
-                  <td>{{actualWorkingHoursDataResponse.firstSwipe}}</td>
-                  <td>{{actualWorkingHoursDataResponse.lastSwipe}}</td>
-                  <td>{{actualWorkingHoursDataResponse.actualWorkingHours}}</td>
-                  <td>{{totalWorkingHoursDataResponse.totalWorkingHours}}</td>
-                  <td>{{outTimeSpentDataResponse.totalTimeSpentOutside}}</td>
-                  <td>{{remianingWorkingHourDataResponse.remainingWorkingHours}}</td>
-                  <td>{{response.endOfDayTime}}</td>
+                  <td>{{firstSwipe}}</td>
+                  <td>{{lastSwipe}}</td>
+                  <td>{{actualWorkingHoursDataResponse}}</td>
+                  <td>{{totalWorkingHoursDataResponse}}</td>
+                  <td>{{outTimeSpentDataResponse}}</td>
+                 
                 </tr>
            
         </tbody>
