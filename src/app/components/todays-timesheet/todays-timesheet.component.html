@@ -1,0 +1,26 @@
+<app-employee-navbar></app-employee-navbar>
+<div class="my-4"></div> <!-- Add some vertical space -->
+<div *ngIf="remianingWorkingHourDataResponse && endOfDayResponse">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Remaining Working Hours</th>
+                <th scope="col">End of Day</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{remianingWorkingHourDataResponse}}</td>
+                <td>{{endOfDayResponse}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+<div *ngIf="!remianingWorkingHourDataResponse && !endOfDayResponse" class="Nodatafound">
+    <img src="assets/NoDataFound.png" alt="No records" />
+</div>
