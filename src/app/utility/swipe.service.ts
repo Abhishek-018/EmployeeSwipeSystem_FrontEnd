@@ -17,8 +17,11 @@ export class SwipeService {
     return this.http.post<IApiResponseEntity>(url,{});
   }
   swipeOut(employeeId:number):Observable<IApiResponseEntity>{
-    const url =`${this.apiUrl}/out?employeeId=${employeeId}`;
-    return this.http.post<IApiResponseEntity>(url,{});
+    const url =`${this.apiUrl}/out`;
+    const postBody = {
+      "employeeId": employeeId
+    }
+    return this.http.post<IApiResponseEntity>(url,postBody);
   }
 
 
